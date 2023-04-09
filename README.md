@@ -1,4 +1,4 @@
-# Tatle: Pleinr / Repository: https://bitbucket.org/saulyaka/pleinr-django/src/develop/
+# Tatle: Pleinr / Repository: saulyaka/pleinr-django/src/develop/
 
 # Author: Alla Popova
 # Framework: Django
@@ -22,8 +22,3 @@
     SQL_PORT=5432
 
     DEBUG=1
-    HASHID_FIELD_SALT='Live is great on Tenerife'
-
-# Useful commands:
-python manage.py loaddata fixtures
-> Load objects from fixtures.json. Replace objects if pk is matched.
