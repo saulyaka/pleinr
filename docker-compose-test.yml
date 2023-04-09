@@ -1,0 +1,26 @@
+version: "3.9"
+
+services:
+  web:
+    container_name: web
+    environment:
+      - SECRET_KEY=''
+      - DJANGO_ALLOWED_HOSTS='0 0 0 0'
+      - DEBUG=1
+      - HASHID_FIELD_SALT='Test'
+    build:
+      context: .
+      dockerfile: Dockerfile.test
+    volumes:
+      - ./pleinr:/code
+      - ./static:/static
+      - ./media:/media
+    ports:
+      - 8000:8000
+    command: >
+      sh -c "python manage.py migrate &&
+      python manage.py test"
+
+volumes:
+  coverage_html_report:
+

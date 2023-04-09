@@ -1,0 +1,21 @@
+FROM python:3.10-alpine
+
+LABEL maintainer="saulyaka"
+
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /code
+COPY requirements.txt requirements.txt
+
+RUN apk upgrade -U &&\ 
+    apk add ca-certificates ffmpeg libva-intel-driver &&\
+    rm -rf /var/cache/* 
+
+RUN pip install --upgrade pip && \
+    apk add --update --no-cache postgresql-client && \
+    apk add --update --no-cache --virtual .tmp-deps \
+    build-base postgresql-dev musl-dev && \
+    pip install -r requirements.txt && \
+    apk del .tmp-deps
+
+COPY ./pleinr code

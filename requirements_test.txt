@@ -1,0 +1,11 @@
+Django>=4.0,<5.0
+djangorestframework
+requests
+django-cors-headers
+pyyaml
+django-phonenumber-field[phonenumbers]
+django-hashid-field
+coverage
+gunicorn==20.1.0
+drf-spectacular
+Pillow

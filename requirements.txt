@@ -1,0 +1,14 @@
+Django>=4.0,<5.0
+psycopg2
+djangorestframework
+requests
+django-cors-headers
+pyyaml
+django-phonenumber-field[phonenumbers]
+django-hashid-field
+coverage
+gunicorn==20.1.0
+# python-ffmpeg
+drf-spectacular
+Pillow
+model_mommy

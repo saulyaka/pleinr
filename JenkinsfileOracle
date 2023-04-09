@@ -1,0 +1,40 @@
+pipeline {
+  agent {
+    label "oracle"
+    }
+  stages{
+    stage("Verify tooling"){
+      steps {
+        sh '''
+          sudo docker info
+          sudo docker version
+          sudo docker-compose version
+        '''
+      }
+    }
+    stage('Prune docker'){
+      steps {
+        sh '''
+          git checkout 
+          sudo docker system prune -f -a
+        '''
+      }
+    }
+    stage('Build containers') {
+      steps {
+        sh '''
+          cd ~/pleinr-django
+          sudo docker-compose -f docker-compose.yml up -d --build
+          sudo docker ps
+        '''
+      }
+    }
+    stage('Clean') {
+      steps {
+        sh '''
+          sudo docker system prune -f
+        '''
+      }
+    }
+  }
+}
